@@ -47,9 +47,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: const Drawer(),
       body: FooterView(
-          footer: Footer(
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
+        footer: Footer(
+          child: Padding(
+              padding: const EdgeInsets.only(bottom: 1.0),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -122,6 +122,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     const Text(
+                      'Blagajna, GUI verzija',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 12.0,
+                          color: Color(0xFF162A49)),
+                    ),
+                    const Text(
                       'Andrej Bartulin, 2022, Public Domain',
                       style: TextStyle(
                           fontWeight: FontWeight.w300,
@@ -130,24 +137,34 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ]),
             ),
-          ),
-          children: <Widget>[            
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(20.0),
-                  fixedSize: const Size(300, 80)),
-              child: const Text("Login"),
+        ),
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 150.0),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(20.0),
+                    fixedSize: const Size(300, 80)),
+                child: const Text("Login"),
+              ),
             ),
-            const Text(" "),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(20.0),
-                  fixedSize: const Size(300, 80)),
-              child: const Text("Sign up"),
-            )
-          ]),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 150.0),
+            child: Stack(alignment: Alignment.center, children: [Center(
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(20.0),
+                    fixedSize: const Size(300, 80)),
+                child: const Text("Sign up"),
+              ),
+            ),],)
+          ),
+        ],
+      ),
     );
   }
 }
