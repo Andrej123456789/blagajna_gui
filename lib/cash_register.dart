@@ -1,8 +1,7 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 
-List<String> outputBox = <String>[];
+import 'variales.dart';
+import 'product_input.dart';
 
 class MainCashRegister extends StatefulWidget {
   const MainCashRegister({super.key});
@@ -12,38 +11,12 @@ class MainCashRegister extends StatefulWidget {
 }
 
 class CashRegister extends State<MainCashRegister> {
-  void addOutput(String str) {
-    String finalString = str;
-    finalString += "\n";
-
-    outputBox.add(finalString);
-    updateText();
-  }
-
-  String getOutput() {
-    String returnString = "";
-
-    for (var i = 0; i < outputBox.length; i++) {
-      returnString += outputBox[i];
-    }
-
-    return returnString;
-  }
-
-  void testOutput() {
-    addOutput("jedan");
-    addOutput("dva");
-
-    print(getOutput());    
-    print("------------------");
-
-    outputBox.clear();
-  }
+  OutputBox outputBox = OutputBox();
 
   String outputText = "";
   void updateText() {
     setState(() {
-      outputText = getOutput();
+      outputText = outputBox.getOutput();
     });
   }
 
@@ -58,22 +31,30 @@ class CashRegister extends State<MainCashRegister> {
             Positioned(
               top: 10,
               left: 110,
-              child: Text(getOutput()),
+              child: Text(outputBox.getOutput()),
             ),
             Positioned(
                 bottom: 20,
                 left: 110,
                 child: ElevatedButton(
                   onPressed: () {
-                    addOutput("apple");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MainManualInput()));
                   },
                   child: const Text("Manual input"),
                 )),
             Positioned(
                 bottom: 20,
-                left: 250,
+                left: 255,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MainMenuInput()));
+                  },
                   child: const Text("Choose from menu"),
                 )),
             Positioned(
@@ -81,7 +62,16 @@ class CashRegister extends State<MainCashRegister> {
                 left: 435,
                 child: ElevatedButton(
                   onPressed: () {
-                    outputBox.clear();
+                    updateText();
+                  },
+                  child: const Text("Update buffer"),
+                )),
+            Positioned(
+                bottom: 20,
+                left: 575,
+                child: ElevatedButton(
+                  onPressed: () {
+                    outputBox.clearOutput();
                     updateText();
                   },
                   child: const Text("Clear buffer"),
