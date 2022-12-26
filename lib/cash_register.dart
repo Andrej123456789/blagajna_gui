@@ -30,7 +30,6 @@ class CashRegister extends State<MainCashRegister> {
     return returnString;
   }
 
-  // ignore: avoid_print
   void testOutput() {
     addOutput("jedan");
     addOutput("dva");
