@@ -1,7 +1,52 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
-class CashRegister extends StatelessWidget {
-  const CashRegister({super.key});
+List<String> outputBox = <String>[];
+
+class MainCashRegister extends StatefulWidget {
+  const MainCashRegister({super.key});
+
+  @override
+  CashRegister createState() => CashRegister();
+}
+
+class CashRegister extends State<MainCashRegister> {
+  void addOutput(String str) {
+    String finalString = str;
+    finalString += "\n";
+
+    outputBox.add(finalString);
+    updateText();
+  }
+
+  String getOutput() {
+    String returnString = "";
+
+    for (var i = 0; i < outputBox.length; i++) {
+      returnString += outputBox[i];
+    }
+
+    return returnString;
+  }
+
+  // ignore: avoid_print
+  void testOutput() {
+    addOutput("jedan");
+    addOutput("dva");
+
+    print(getOutput());    
+    print("------------------");
+
+    outputBox.clear();
+  }
+
+  String outputText = "";
+  void updateText() {
+    setState(() {
+      outputText = getOutput();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,16 +56,37 @@ class CashRegister extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            const Positioned(
+            Positioned(
               top: 10,
               left: 110,
-              child: Text("Output"),
+              child: Text(getOutput()),
             ),
-            const Positioned(
-              bottom: 10,
-              left: 110,
-              child: Text("test")
-            ),
+            Positioned(
+                bottom: 20,
+                left: 110,
+                child: ElevatedButton(
+                  onPressed: () {
+                    addOutput("apple");
+                  },
+                  child: const Text("Manual input"),
+                )),
+            Positioned(
+                bottom: 20,
+                left: 250,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("Choose from menu"),
+                )),
+            Positioned(
+                bottom: 20,
+                left: 435,
+                child: ElevatedButton(
+                  onPressed: () {
+                    outputBox.clear();
+                    updateText();
+                  },
+                  child: const Text("Clear buffer"),
+                )),
             Positioned(
                 right: 50,
                 top: 350,

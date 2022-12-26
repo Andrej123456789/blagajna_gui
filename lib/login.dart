@@ -45,7 +45,7 @@ class Login extends StatelessWidget {
               onPressed: () {
                 // TODO: check credentials and write them to database
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const CashRegister()));
+                    MaterialPageRoute(builder: (context) => const MainCashRegister()));
               },
               child: const Text('Login'),
             ),
