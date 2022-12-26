@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Color(0xFF162A49)),
                   ),
                   const Text(
-                    'Andrej Bartulin, 2022, Public Domain',
+                    'Andrej Bartulin, 2022, BSD 3-Clause "New" or "Revised" License',
                     style: TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 12.0,

@@ -1,4 +1,8 @@
+/* Flutters' imports */
 import 'package:flutter/material.dart';
+
+/* Imports from this project */
+import 'package:blagajna_gui/login.dart';
 
 class Signup extends StatelessWidget {
   const Signup({super.key});
@@ -62,7 +66,10 @@ class Signup extends StatelessWidget {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                // Perform login action
+                // TODO: check credentials and write them to database
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Login()));
               },
               child: const Text('Sign Up'),
             ),

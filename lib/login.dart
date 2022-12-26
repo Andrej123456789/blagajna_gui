@@ -1,4 +1,8 @@
+/* Flutters' imports */
 import 'package:flutter/material.dart';
+
+/* Imports from this project */
+import 'cash_register.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -39,7 +43,9 @@ class Login extends StatelessWidget {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                // Perform login action
+                // TODO: check credentials and write them to database
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const CashRegister()));
               },
               child: const Text('Login'),
             ),
