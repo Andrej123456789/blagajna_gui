@@ -1,8 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:footer/footer.dart';
 import 'package:footer/footer_view.dart';
+
+import 'signup.dart';
+import 'login.dart';
 
 class Blagajna extends StatelessWidget {
   const Blagajna({super.key});
@@ -49,101 +51,104 @@ class _MyHomePageState extends State<MyHomePage> {
       body: FooterView(
         footer: Footer(
           child: Padding(
-              padding: const EdgeInsets.only(bottom: 1.0),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          SizedBox(
-                              height: 45.0,
-                              width: 45.0,
-                              child: Center(
-                                child: Card(
-                                  elevation: 5.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        25.0), // half of height and width of Image
-                                  ),
-                                  child: IconButton(
-                                    icon: const Icon(
-                                      Icons.audiotrack,
-                                      size: 20.0,
-                                    ),
-                                    color: const Color(0xFF162A49),
-                                    onPressed: () {},
-                                  ),
+            padding: const EdgeInsets.only(bottom: 1.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        SizedBox(
+                            height: 45.0,
+                            width: 45.0,
+                            child: Center(
+                              child: Card(
+                                elevation: 5.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      25.0), // half of height and width of Image
                                 ),
-                              )),
-                          SizedBox(
-                              height: 45.0,
-                              width: 45.0,
-                              child: Center(
-                                child: Card(
-                                  elevation: 5.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        25.0), // half of height and width of Image
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.audiotrack,
+                                    size: 20.0,
                                   ),
-                                  child: IconButton(
-                                    icon: const Icon(
-                                      Icons.fingerprint,
-                                      size: 20.0,
-                                    ),
-                                    color: const Color(0xFF162A49),
-                                    onPressed: () {},
-                                  ),
+                                  color: const Color(0xFF162A49),
+                                  onPressed: () {},
                                 ),
-                              )),
-                          SizedBox(
-                              height: 45.0,
-                              width: 45.0,
-                              child: Center(
-                                child: Card(
-                                  elevation: 5.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        25.0), // half of height and width of Image
-                                  ),
-                                  child: IconButton(
-                                    icon: const Icon(
-                                      Icons.call,
-                                      size: 20.0,
-                                    ),
-                                    color: const Color(0xFF162A49),
-                                    onPressed: () {},
-                                  ),
+                              ),
+                            )),
+                        SizedBox(
+                            height: 45.0,
+                            width: 45.0,
+                            child: Center(
+                              child: Card(
+                                elevation: 5.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      25.0), // half of height and width of Image
                                 ),
-                              )),
-                        ],
-                      ),
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.fingerprint,
+                                    size: 20.0,
+                                  ),
+                                  color: const Color(0xFF162A49),
+                                  onPressed: () {},
+                                ),
+                              ),
+                            )),
+                        SizedBox(
+                            height: 45.0,
+                            width: 45.0,
+                            child: Center(
+                              child: Card(
+                                elevation: 5.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      25.0), // half of height and width of Image
+                                ),
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.call,
+                                    size: 20.0,
+                                  ),
+                                  color: const Color(0xFF162A49),
+                                  onPressed: () {},
+                                ),
+                              ),
+                            )),
+                      ],
                     ),
-                    const Text(
-                      'Blagajna, GUI verzija',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 12.0,
-                          color: Color(0xFF162A49)),
-                    ),
-                    const Text(
-                      'Andrej Bartulin, 2022, Public Domain',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 12.0,
-                          color: Color(0xFF162A49)),
-                    ),
-                  ]),
-            ),
+                  ),
+                  const Text(
+                    'Blagajna, GUI verzija',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 12.0,
+                        color: Color(0xFF162A49)),
+                  ),
+                  const Text(
+                    'Andrej Bartulin, 2022, Public Domain',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 12.0,
+                        color: Color(0xFF162A49)),
+                  ),
+                ]),
+          ),
         ),
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(top: 150.0),
             child: Center(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Login()));
+                },
                 style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(20.0),
                     fixedSize: const Size(300, 80)),
@@ -152,17 +157,26 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 150.0),
-            child: Stack(alignment: Alignment.center, children: [Center(
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(20.0),
-                    fixedSize: const Size(300, 80)),
-                child: const Text("Sign up"),
-              ),
-            ),],)
-          ),
+              padding: const EdgeInsets.only(top: 150.0),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Signup()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.all(20.0),
+                          fixedSize: const Size(300, 80)),
+                      child: const Text("Sign Up"),
+                    ),
+                  ),
+                ],
+              )),
         ],
       ),
     );
