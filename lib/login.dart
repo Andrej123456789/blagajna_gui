@@ -1,4 +1,4 @@
-/* Flutters' imports */
+/* Flutter's imports */
 import 'package:flutter/material.dart';
 
 /* Imports from this project */
@@ -43,6 +43,8 @@ class Login extends StatelessWidget {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
+                Navigator.pop(context);
+
                 // TODO: check credentials and write them to database
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const MainCashRegister()));

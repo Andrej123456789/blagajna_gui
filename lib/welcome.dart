@@ -3,8 +3,63 @@ import 'package:flutter/material.dart';
 import 'package:footer/footer.dart';
 import 'package:footer/footer_view.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 import 'signup.dart';
 import 'login.dart';
+
+class PhoneNumber {
+  showAlertDialog(BuildContext context) {
+    Widget okButton = ElevatedButton(
+      child: const Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: const Text("+385 99 966 9636"),
+      content: const Text("This is DEMO of the phone number"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+}
+
+class Sales {
+  showAlertDialog(BuildContext context) {
+    Widget okButton = ElevatedButton(
+      child: const Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // TODO: read from database
+    AlertDialog alert = AlertDialog(
+      title: const Text("Today's earnings: (with costs included): "),
+      content: const Text("20€"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+}
 
 class Blagajna extends StatelessWidget {
   const Blagajna({super.key});
@@ -17,7 +72,7 @@ class Blagajna extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Blagajna - početna stranica'),
+      home: const MyHomePage(title: 'Blagajna - homepage'),
     );
   }
 }
@@ -41,6 +96,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  PhoneNumber phoneNumber = PhoneNumber();
+  Sales sales = Sales();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,51 +130,62 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 child: IconButton(
                                   icon: const Icon(
-                                    Icons.audiotrack,
-                                    size: 20.0,
-                                  ),
-                                  color: const Color(0xFF162A49),
-                                  onPressed: () {},
-                                ),
-                              ),
-                            )),
-                        SizedBox(
-                            height: 45.0,
-                            width: 45.0,
-                            child: Center(
-                              child: Card(
-                                elevation: 5.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      25.0), // half of height and width of Image
-                                ),
-                                child: IconButton(
-                                  icon: const Icon(
-                                    Icons.fingerprint,
-                                    size: 20.0,
-                                  ),
-                                  color: const Color(0xFF162A49),
-                                  onPressed: () {},
-                                ),
-                              ),
-                            )),
-                        SizedBox(
-                            height: 45.0,
-                            width: 45.0,
-                            child: Center(
-                              child: Card(
-                                elevation: 5.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      25.0), // half of height and width of Image
-                                ),
-                                child: IconButton(
-                                  icon: const Icon(
                                     Icons.call,
                                     size: 20.0,
                                   ),
                                   color: const Color(0xFF162A49),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    phoneNumber.showAlertDialog(context);
+                                  },
+                                ),
+                              ),
+                            )),
+                        SizedBox(
+                            height: 45.0,
+                            width: 45.0,
+                            child: Center(
+                              child: Card(
+                                elevation: 5.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      25.0), // half of height and width of Image
+                                ),
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.account_balance,
+                                    size: 20.0,
+                                  ),
+                                  color: const Color(0xFF162A49),
+                                  onPressed: () {
+                                    sales.showAlertDialog(context);
+                                  },
+                                ),
+                              ),
+                            )),
+                        SizedBox(
+                            height: 45.0,
+                            width: 45.0,
+                            child: Center(
+                              child: Card(
+                                elevation: 5.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      25.0), // half of height and width of Image
+                                ),
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.code,
+                                    size: 20.0,
+                                  ),
+                                  color: const Color(0xFF162A49),
+                                  onPressed: () async {
+                                    const String url =
+                                        "https://github.com/Andrej123456789/blagajna_gui";
+                                    final Uri uri = Uri.parse(url);
+                                    if (await canLaunchUrl(uri)) {
+                                      await launchUrl(uri);
+                                    }
+                                  },
                                 ),
                               ),
                             )),
@@ -124,14 +193,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   const Text(
-                    'Blagajna, GUI verzija',
+                    'Blagajna, GUI version',
                     style: TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 12.0,
                         color: Color(0xFF162A49)),
                   ),
                   const Text(
-                    'Andrej Bartulin, 2022, BSD 3-Clause "New" or "Revised" License',
+                    'Andrej Bartulin, 2022, BSD 3-Clause License',
                     style: TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 12.0,

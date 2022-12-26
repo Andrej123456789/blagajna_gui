@@ -1,4 +1,4 @@
-/* Flutters' imports */
+/* Flutter's imports */
 import 'package:flutter/material.dart';
 
 /* Imports from this project */

@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   footer:
+  url_launcher: ^6.1.7
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
