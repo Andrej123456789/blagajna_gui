@@ -38,15 +38,29 @@ class CashRegister extends State<MainCashRegister> {
         ),
         body: Stack(
           children: [
+            const Positioned(top: 10, left: 110, child: Text("Products: ")),
             Positioned(
-              top: 10,
-              left: 110,
-              child: Text(outputBox.getOutput()),
-            ),
+                top: 30,
+                left: 110,
+                child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8.5))),
+                    /*child: Text(outputBox.getOutput())*/
+                    child: SizedBox(
+                        width: 450,
+                        height: 250,
+                        child: SingleChildScrollView(
+                            child: Text(outputBox.getOutput()))))),
+            const Positioned(top: 350, left: 110, child: Text("Total: ")),
             Positioned(
-              top: 350,
+              top: 370,
               left: 110,
-              child: Text(priceText),
+              child: Text(
+                priceText,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
             Positioned(
                 bottom: 20,
