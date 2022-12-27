@@ -93,3 +93,4 @@ flutter:
 
   assets:
     - assets/
+    - assets/products/

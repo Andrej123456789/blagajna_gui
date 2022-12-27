@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'variales.dart';
 import 'product_input.dart';
+import 'settings.dart';
+import 'variales.dart';
 
 class MainCashRegister extends StatefulWidget {
   const MainCashRegister({super.key});
@@ -18,6 +19,15 @@ class CashRegister extends State<MainCashRegister> {
     setState(() {
       outputText = outputBox.getOutput();
     });
+
+    updatePriceBox();
+  }
+
+  String priceText = "";
+  void updatePriceBox() {
+    setState(() {
+      priceText = roundDouble(money, 2).toString() + currency;
+    });
   }
 
   @override
@@ -32,6 +42,11 @@ class CashRegister extends State<MainCashRegister> {
               top: 10,
               left: 110,
               child: Text(outputBox.getOutput()),
+            ),
+            Positioned(
+              top: 350,
+              left: 110,
+              child: Text(priceText),
             ),
             Positioned(
                 bottom: 20,
@@ -73,8 +88,23 @@ class CashRegister extends State<MainCashRegister> {
                   onPressed: () {
                     outputBox.clearOutput();
                     updateText();
+
+                    priceText = "";
+                    money = 0;
                   },
                   child: const Text("Clear buffer"),
+                )),
+            Positioned(
+                bottom: 20,
+                left: 710,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MainSettingsMenu()));
+                  },
+                  child: const Text("Settings"),
                 )),
             Positioned(
                 right: 50,
