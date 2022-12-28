@@ -14,6 +14,9 @@ class MainCashRegister extends StatefulWidget {
 class CashRegister extends State<MainCashRegister> {
   OutputBox outputBox = OutputBox();
 
+  var controller = TextEditingController();
+  var focusNode = FocusNode();
+
   String outputText = "";
   void updateText() {
     setState(() {
@@ -36,98 +39,112 @@ class CashRegister extends State<MainCashRegister> {
         appBar: AppBar(
           title: const Text('Blagajna (Cash Register)'),
         ),
-        body: Stack(
+        body: Column(
           children: [
-            const Positioned(top: 10, left: 110, child: Text("Products: ")),
-            Positioned(
-                top: 30,
-                left: 110,
-                child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8.5))),
-                    /*child: Text(outputBox.getOutput())*/
-                    child: SizedBox(
-                        width: 450,
-                        height: 250,
-                        child: SingleChildScrollView(
-                            child: Text(outputBox.getOutput()))))),
-            const Positioned(top: 350, left: 110, child: Text("Total: ")),
-            Positioned(
-              top: 370,
-              left: 110,
-              child: Text(
-                priceText,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      const Text("Products: "),
+                      Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8.5))),
+                          child: SizedBox(
+                              width: 450,
+                              height: 250,
+                              child: SingleChildScrollView(
+                                  child: Text(outputBox.getOutput())))),
+                      const SizedBox(height: 10),
+                      const Text("Total: "),
+                      Text(priceText,
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      const SizedBox(height: 40)
+                    ],
+                  ),
+                ),
+                Image.asset("assets/image.bmp", width: 150, height: 150),
+              ],
             ),
-            Positioned(
-                bottom: 20,
-                left: 110,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MainManualInput()));
-                  },
-                  child: const Text("Manual input"),
-                )),
-            Positioned(
-                bottom: 20,
-                left: 255,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MainMenuInput()));
-                  },
-                  child: const Text("Choose from menu"),
-                )),
-            Positioned(
-                bottom: 20,
-                left: 435,
-                child: ElevatedButton(
-                  onPressed: () {
-                    updateText();
-                  },
-                  child: const Text("Update buffer"),
-                )),
-            Positioned(
-                bottom: 20,
-                left: 575,
-                child: ElevatedButton(
-                  onPressed: () {
-                    outputBox.clearOutput();
-                    updateText();
+            Row(
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: 400,
+                          child: TextField(
+                            controller: controller,
+                            focusNode: focusNode,
+                            decoration: const InputDecoration(
+                              labelText: "Barcode input",
+                              border: OutlineInputBorder(),
+                            ),
+                            onSubmitted: (value) {
+                              outputBox.addOutput(value);
+                              updateText();
 
-                    priceText = "";
-                    money = 0;
-                  },
-                  child: const Text("Clear buffer"),
-                )),
-            Positioned(
-                bottom: 20,
-                left: 710,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MainSettingsMenu()));
-                  },
-                  child: const Text("Settings"),
-                )),
-            Positioned(
-                right: 50,
-                top: 350,
-                child: Image.asset(
-                  'assets/image.bmp',
-                  width: 150,
-                  height: 150,
-                )),
+                              controller.clear();
+                              focusNode.requestFocus();
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MainMenuInput()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: const Size(200, 50)),
+                      child: const Text("GUI menu"),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        updateText();
+                      },
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: const Size(200, 50)),
+                      child: const Text("Update buffer"),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        outputBox.clearOutput();
+                        updateText();
+
+                        priceText = "";
+                        money = 0;
+                      },
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: const Size(200, 50)),
+                      child: const Text("Clear buffer"),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ));
   }

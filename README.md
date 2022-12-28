@@ -11,5 +11,5 @@ Install Flutter, Flutter VS Code extension, open VS Code and press F5 key
 
 ## TODO
 - [ ] Database support
-- [ ] Better UI
-- [ ] Picture of bill
+- [x] Better UI (whole design of UI is to be simple and clean)
+- [ ] Picture of the bill

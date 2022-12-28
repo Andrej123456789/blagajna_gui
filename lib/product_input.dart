@@ -1,54 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'variales.dart';
-
-class MainManualInput extends StatefulWidget {
-  const MainManualInput({super.key});
-
-  @override
-  ManualInput createState() => ManualInput();
-}
-
-class ManualInput extends State<MainManualInput> {
-  OutputBox outputBox = OutputBox();
-
-  var controller = TextEditingController();
-  var focusNode = FocusNode();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Manual input'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Barcode input'),
-            TextField(
-              controller: controller,
-              focusNode: focusNode,
-              autofocus: true,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Enter a barcode',
-              ),
-              onSubmitted: (value) {
-                outputBox.addOutput(value);
-
-                controller.clear();
-                focusNode.requestFocus();
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class MainMenuInput extends StatefulWidget {
   const MainMenuInput({super.key});
