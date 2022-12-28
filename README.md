@@ -1,6 +1,8 @@
 # blagajna_gui
 
-GUI verzija blagajne napisana u Dartu koristieći Flutter
+GUI verzija [blagajne](https://github.com/Andrej123456789/blagajna) napisana u Dartu koristieći Flutter
+
+GUI version of [cash register](https://github.com/Andrej123456789/blagajna) written in Dart using Flutter
 
 Merry Christmas or Hanukkah
 

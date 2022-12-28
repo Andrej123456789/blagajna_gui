@@ -1,8 +1,7 @@
-// ignore_for_file: avoid_print
-
 import 'dart:math';
 
 List<String> outputBox = <String>[];
+int products = 1;
 
 double money = 0;
 String currency = "€";
@@ -13,10 +12,28 @@ double roundDouble(double value, int places) {
 }
 
 class OutputBox {
-  void addOutput(String str) {
-    String finalString = str;
-    finalString += "\n";
+  void addProduct(String str, {price}) {
+    String finalBarcode = "";
+    String finalPrice = "";
 
+    if (str.contains(' '))
+    {
+      finalBarcode = str.substring(0, str.indexOf(' '));
+
+      finalPrice = str.substring(str.indexOf(' '), str.length);
+      money += double.parse(finalPrice);
+    }
+
+    else
+    {
+      finalBarcode = str;
+      finalPrice = price.toString();
+    }
+
+    String finalString = "Product $products: $finalBarcode | Price: $finalPrice $currency";
+    products++;
+
+    finalString += "\n";
     outputBox.add(finalString);
   }
 
@@ -32,16 +49,9 @@ class OutputBox {
 
   void clearOutput() {
     outputBox.clear();
-  }
-
-  void testOutput() {
-    addOutput("jedan");
-    addOutput("dva");
-
-    print(getOutput());
-    print("------------------");
-
-    outputBox.clear();
+    
+    money = 0;
+    products = 0;
   }
 }
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'product_input.dart';
-import 'settings.dart';
 import 'variales.dart';
 
 class MainCashRegister extends StatefulWidget {
@@ -85,7 +84,7 @@ class CashRegister extends State<MainCashRegister> {
                               border: OutlineInputBorder(),
                             ),
                             onSubmitted: (value) {
-                              outputBox.addOutput(value);
+                              outputBox.addProduct(value);
                               updateText();
 
                               controller.clear();
@@ -133,9 +132,8 @@ class CashRegister extends State<MainCashRegister> {
                       onPressed: () {
                         outputBox.clearOutput();
                         updateText();
-
+                        
                         priceText = "";
-                        money = 0;
                       },
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(200, 50)),

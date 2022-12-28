@@ -34,7 +34,7 @@ class PhoneNumber {
   }
 }
 
-class Sales {
+class Help {
   showAlertDialog(BuildContext context) {
     Widget okButton = ElevatedButton(
       child: const Text("OK"),
@@ -45,8 +45,9 @@ class Sales {
 
     // TODO: read from database
     AlertDialog alert = AlertDialog(
-      title: const Text("Today's earnings: (with costs included): "),
-      content: const Text("20€"),
+      title: const Text("About this software/How to use it: "),
+      content: const Text(
+          "GUI version of cash register written in Dart using Flutter\n\nTo enter price of a new product which is not located in database, seperate barcode and price by space!\n\nPlease do not use this in real enviroment because it cannot connect to your state's administration for taxes, this is just simulator for playing around!"),
       actions: [
         okButton,
       ],
@@ -97,7 +98,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   PhoneNumber phoneNumber = PhoneNumber();
-  Sales sales = Sales();
+  Help help = Help();
 
   @override
   Widget build(BuildContext context) {
@@ -152,12 +153,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 child: IconButton(
                                   icon: const Icon(
-                                    Icons.account_balance,
+                                    Icons.help_outline,
                                     size: 20.0,
                                   ),
                                   color: const Color(0xFF162A49),
                                   onPressed: () {
-                                    sales.showAlertDialog(context);
+                                    help.showAlertDialog(context);
                                   },
                                 ),
                               ),

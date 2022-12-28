@@ -36,7 +36,7 @@ class MenuInput extends State<StatefulWidget> {
                 left: 50,
                 child: IconButton(
                   onPressed: () {
-                    outputBox.addOutput("3850102520381");
+                    outputBox.addProduct("3850102520381", price: 1.60);
                     money.addMoney(1.60);
                   },
                   icon: Image.asset("assets/products/Čokolada Dorina.jpg"),
@@ -49,7 +49,7 @@ class MenuInput extends State<StatefulWidget> {
                 left: 350,
                 child: IconButton(
                   onPressed: () {
-                    outputBox.addOutput("9789531976152");
+                    outputBox.addProduct("9789531976152", price: 17.88);
                     money.addMoney(17.88);
                   },
                   icon: Image.asset(
@@ -66,7 +66,7 @@ class MenuInput extends State<StatefulWidget> {
                 left: 650,
                 child: IconButton(
                   onPressed: () {
-                    outputBox.addOutput("9789542991152");
+                    outputBox.addProduct("9789542991152", price: 21.06);
                     money.addMoney(21.06);
                   },
                   icon: Image.asset(
@@ -83,7 +83,7 @@ class MenuInput extends State<StatefulWidget> {
                 left: 50,
                 child: IconButton(
                   onPressed: () {
-                    outputBox.addOutput("4096542991152");
+                    outputBox.addProduct("4096542991152", price: 6.64);
                     money.addMoney(6.64);
                   },
                   icon: Image.asset("assets/products/Kuhača drvena.jpg"),
@@ -96,7 +96,7 @@ class MenuInput extends State<StatefulWidget> {
                 left: 350,
                 child: IconButton(
                   onPressed: () {
-                    outputBox.addOutput("0360002914523");
+                    outputBox.addProduct("0360002914523", price: 13.37);
                     money.addMoney(13.37);
                   },
                   icon: Image.asset(
@@ -113,7 +113,7 @@ class MenuInput extends State<StatefulWidget> {
                 left: 650,
                 child: IconButton(
                   onPressed: () {
-                    outputBox.addOutput("9789151976152");
+                    outputBox.addProduct("9789151976152", price: 3.32);
                     money.addMoney(3.32);
                   },
                   icon: Image.asset(
