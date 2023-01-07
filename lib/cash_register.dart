@@ -74,7 +74,7 @@ class CashRegister extends State<MainCashRegister> {
                   ],
                 ),
               ),
-              Image.asset("assets/image.bmp", width: 150, height: 150),
+              //Image.asset("assets/image.bmp", width: 150, height: 150),
             ],
           ),
           Row(
