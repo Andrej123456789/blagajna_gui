@@ -1,3 +1,5 @@
+**PROJECT IS DONE!**
+
 # blagajna_gui
 
 GUI verzija [blagajne](https://github.com/Andrej123456789/blagajna) napisana u Dartu koristieći Flutter
